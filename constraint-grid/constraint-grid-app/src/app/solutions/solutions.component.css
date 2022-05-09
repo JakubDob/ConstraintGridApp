@@ -1,0 +1,4 @@
+.debugText{
+    max-width: 50ch;
+    overflow-wrap: break-word;
+}

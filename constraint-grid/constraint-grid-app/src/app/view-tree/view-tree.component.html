@@ -1,0 +1,25 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+        <mat-icon *ngIf="node.expandable" class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        </mat-icon>
+        <mat-checkbox class="checklist-leaf-node" [checked]="checklistSelection.isSelected(node)"
+            (change)="leafSelectionToggle(node)">
+        </mat-checkbox>
+        <button mat-button class="clickable-tree-item" (click)="onClickItem(node)">{{node.name}}</button>
+    </mat-tree-node>
+
+    <mat-tree-node *matTreeNodeDef="let node; when: hasChild; index as i" matTreeNodePadding>
+        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.data">
+            <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+        </button>
+        <mat-checkbox [checked]="descendantsAllSelected(node)" [indeterminate]="descendantsPartiallySelected(node)"
+            (change)="parentSelectionToggle(node)">
+        </mat-checkbox>
+        <button mat-button class="clickable-tree-item" (click)="onClickItem(node)">{{node.name}}</button>
+    </mat-tree-node>
+</mat-tree>
+<button mat-raised-button (click)="onDeleteSelected()">Delete Selected</button>

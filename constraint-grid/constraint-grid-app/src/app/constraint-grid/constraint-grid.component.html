@@ -1,0 +1,6 @@
+<div class="grid" (mouseover)="onGridMouseover($event)" (mousedown)="onGridMouseDown($event)"
+    (mouseup)="onGridMouseUp()" [ngStyle]="setGridStyle()">
+    <ng-container *ngFor=" let i of sizeAsArray()">
+        <div class="grid-cell" #cells></div>
+    </ng-container>
+</div>

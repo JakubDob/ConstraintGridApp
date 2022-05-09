@@ -1,0 +1,78 @@
+<mat-tab-group>
+    <mat-tab label="Constraints">
+        <mat-sidenav-container autosize>
+            <mat-sidenav mode="side" opened>
+                <mat-card>
+                    <value-options-menu (minChange)="minValueChange($event)" (maxChange)="maxValueChange($event)"></value-options-menu>
+                </mat-card>
+                <mat-card>
+                    <constraint-select></constraint-select>
+                </mat-card>
+                <mat-card>
+                    <view-tree></view-tree>
+                    <!-- <button mat-raised-button (click)="deleteSelectedTreeItems()">Delete selected</button> -->
+                    <button mat-raised-button (click)="debugLog()">Debug</button>
+                </mat-card>
+
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <div class="content-container">
+                    <!-- <div class="constraint-grid">GRID HERE</div> -->
+                    <constraint-grid [cols]="gridCols" [rows]="gridRows" class="constraint-grid" #mainGrid></constraint-grid>
+                    <!-- probably would be better with a service and observables -->
+                    <div class="rightside-content">
+                        <div #optionsAndTools>
+                            <ng-container *ngIf="clickedOnConstraint === 'count'">
+                                <count-options-menu [selectedConstraint]="clickedOnConstraint">
+                                </count-options-menu>
+                            </ng-container>
+                            <ng-container *ngIf="clickedOnConstraint === 'alldifferent'">
+                                <alldifferent-options-menu [selectedConstraint]="clickedOnConstraint">
+                                </alldifferent-options-menu>
+                            </ng-container>
+                            <ng-container *ngIf="shouldShowTools()">
+                                <mat-card>
+                                    <grid-tools></grid-tools>
+                                </mat-card>
+                            </ng-container>
+                        </div>
+                        <ng-container *ngIf="clickedOnView">
+                            <mat-card>
+                                <group-list [ngStyle]="getGroupListStyle()"></group-list>
+                            </mat-card>
+                        </ng-container>
+
+                    </div>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </mat-tab>
+    <mat-tab label="Solution">
+        <mat-sidenav-container autosize>
+            <mat-sidenav mode="side" opened>
+                <mat-card>
+                    <solution-options></solution-options>
+                </mat-card>
+                <mat-card>
+                    <solutions></solutions>
+                </mat-card>
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <div style="width: 800px; height: 800px;">
+                    <constraint-grid #solutionGrid [cols]="gridCols" [rows]="gridRows" [ngStyle]="{'pointer-events':'none'}"></constraint-grid>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+
+        <!-- <div style="width: 800px; height: 800px; background-color: black; color: white; font-size: 20px;">GRID HERE</div>-->
+        <!-- <div style="width: 800px; height: 800px;"> -->
+            <!-- <constraint-grid [solutionGrid]="true"></constraint-grid> -->
+        <!-- </div> -->
+        <!-- <button mat-raised-button (click)="onLoadSolution()">Load Solution</button> -->
+    </mat-tab>
+    <mat-tab label="Testing">
+        <div #debugText></div>
+        <button mat-raised-button (click)="onToJson()">To JSON</button>
+        <!-- <button mat-raised-button (click)="onFromJson()">From JSON</button> -->
+    </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,17 @@
+<div class="constraint-details-container">
+    <div class="options-container">
+        <mat-card>
+            <div class="options-header">
+                <div>alldifferent options</div>
+            </div>
+            <div class="options-content">
+                <mat-divider></mat-divider>
+                <mat-form-field appearance="fill">
+                    <mat-label>Label</mat-label>
+                    <input #viewNameInput matInput placeholder="" value="">
+                </mat-form-field>
+                <button mat-button (click)="onAddView(viewNameInput.value)">Add view</button>
+            </div>
+        </mat-card>
+    </div>
+</div>

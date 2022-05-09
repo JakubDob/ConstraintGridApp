@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill">
+    <mat-label>Solving method</mat-label>
+    <mat-select #selectSolvingMethod [(value)]="selected" (selectionChange)="onSelectionChange($event.value)">
+        <mat-option *ngFor="let s of solvingMethod" [value]="s" >
+            {{s}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

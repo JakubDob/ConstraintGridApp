@@ -1,0 +1,32 @@
+{
+  "name": "constraint-grid-app",
+  "version": "1.0.0",
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.",
+  "main": "karma.conf.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gameuploader/AngularConstraintGrid/issues"
+  },
+  "homepage": "https://github.com/gameuploader/AngularConstraintGrid#readme",
+  "dependencies": {
+    "@angular/animations": "^13.3.6",
+    "@angular/cdk": "^13.3.6",
+    "@angular/cli": "^13.3.5",
+    "@angular/core": "^13.3.6",
+    "@angular/forms": "^13.3.6",
+    "@angular/material": "^13.3.6",
+    "@angular/platform-browser-dynamic": "^13.3.6",
+    "@angular/router": "^13.3.6"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^13.3.5"
+  }
+}

@@ -1,0 +1,42 @@
+services:
+  web:
+    build: constraint-grid
+    ports:
+      - 8080:80
+    networks:
+      common:
+        aliases:
+          - AngularApp
+    depends_on:
+      - backend
+      - solver
+  backend:
+    build: spring-backend
+    ports:
+      - 4444:4444
+    networks:
+      common:
+        aliases:
+          - SpringApp
+    depends_on:
+      - broker
+  solver:
+    build: minizinc-mq
+    networks:
+      common:
+        aliases:
+          - Solver
+    depends_on:
+      - broker
+  broker:
+    build: alpine-artemis
+    ports:
+      - 61616:61616
+      - 8161:8161
+    networks:
+      common:
+        aliases:
+          - Artemis
+    
+networks:
+  common:

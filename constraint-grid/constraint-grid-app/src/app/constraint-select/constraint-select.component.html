@@ -1,0 +1,11 @@
+<div class="flex-column">
+    <mat-form-field appearance="fill">
+        <mat-label>Constraint</mat-label>
+        <mat-select #selectConstraint>
+            <mat-option *ngFor="let c of constraints" [value]="c.name">
+                {{c.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)="onAddConstraint(selectConstraint.value)">Add constraint</button>
+</div>

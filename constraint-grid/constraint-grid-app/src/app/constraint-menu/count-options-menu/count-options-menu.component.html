@@ -1,0 +1,33 @@
+<div class="constraint-details-container">
+    <div class="options-container">
+        <mat-card>
+            <div class="options-header">
+                <div>count options</div>
+            </div>
+            <div class="options-content">
+                <mat-divider></mat-divider>
+                <mat-form-field appearance="outline">
+                    <mat-label>Relation</mat-label>
+                    <mat-select [(value)]="selectedSymbol" #symbolSelect>
+                        <mat-option *ngFor="let symbol of symbols" [value]="symbol.value">
+                            {{symbol.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Amount</mat-label>
+                    <input matInput placeholder="0" value="0" #amountInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Counted value</mat-label>
+                    <input matInput placeholder="0" value="0" #countedValueInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Label</mat-label>
+                    <input #viewNameInput matInput placeholder="" value="">
+                </mat-form-field>
+                <button mat-button (click)="onAddView(viewNameInput.value, symbolSelect.value, amountInput.value, countedValueInput.value)">Add view</button>
+            </div>
+        </mat-card>
+    </div>
+</div>
